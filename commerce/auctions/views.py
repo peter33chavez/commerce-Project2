@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import User
 
@@ -61,3 +62,68 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+@login_required
+#Create Listings
+    #TODO
+    #REQUIREMENTS 
+        #Specify title for listing
+        #text based description
+        #starting bid price 
+        #optional field for URL for image of listing
+        #category field(e.g. Fashion, Toys, Electronics, Home, etc.)
+
+
+#Active Listings Page 
+    #TODO
+    #REQUIREMENTS
+    #this is shown on the index page 
+    #show all current active listings
+    #should display at least (the title, description, current price, and photo (if one exists for the listing))
+
+@login_required
+#Listing Page
+    #TODO
+    #REQUIREMENTS
+
+    #if user is signed in they should be able to "add to WatchList"
+    #if item is already in watch list display "remove from watchlist" instead 
+
+    # if signed in user should be able to bid on item with the minimum bid being higher than starting bid or its current else return error "not meeting requirements"
+
+    #if signed in and the listing is yours, the ability to close the listing should be on this page 
+    #making the highest bid the winner 
+    #listing should no longer be availabe in active listings displayed as "closed listing"
+
+    #if logged in and on a closed listing page and the user was the winning bid. page should display that.
+
+    #if logged in users should be able to add comments to listing at the bottom. 
+    #page should display all comments from that specific listing.
+
+@login_required
+#WatchList
+    #TODO
+    #REQUIREMENTS
+
+    # users who are logged in should have a link on the dashboard for watchlist items. which should display all their watchlist listings. 
+    #optional- show active and closed listings
+
+    # clicked on user should be redirected to the listing page. 
+
+
+#Categories 
+    #TODO
+    #REQUIREMENTS
+
+    #categories page should show all available categories. and when you select a category you should be brought to search results with that category in listening 
+    
+    #all results should be clickable 
+
+
+#Django Admin Interface
+    #TODO
+    #REQUIREMENTS
+
+    #create a createsuperuser account
+
+        
