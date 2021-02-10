@@ -63,7 +63,7 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-@login_required
+#@login_required
 #Create Listings
     #TODO
     #REQUIREMENTS 
@@ -81,7 +81,7 @@ def register(request):
     #show all current active listings
     #should display at least (the title, description, current price, and photo (if one exists for the listing))
 
-@login_required
+#@login_required
 #Listing Page
     #TODO
     #REQUIREMENTS
@@ -100,7 +100,7 @@ def register(request):
     #if logged in users should be able to add comments to listing at the bottom. 
     #page should display all comments from that specific listing.
 
-@login_required
+#@login_required
 #WatchList
     #TODO
     #REQUIREMENTS
@@ -125,5 +125,3 @@ def register(request):
     #REQUIREMENTS
 
     #create a createsuperuser account
-
-        
