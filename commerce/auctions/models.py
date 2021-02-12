@@ -16,7 +16,7 @@ class auctionListings(models.Model):
         return "$" + str(self.startingPrice)
     
 class listingBids(models.Model):
-    listingID = models.ForeignKey(related_name="listingID")
+    listingID = models.ForeignKey(related_name=)
     
 
 
