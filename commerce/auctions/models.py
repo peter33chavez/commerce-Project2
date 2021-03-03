@@ -24,10 +24,9 @@ class auctionListings(models.Model):
         ('Computers/Tablets & Networking','Computers/Tablets & Networking'),
         ('Other','Other')
     )
-
     title = models.CharField( null=True, max_length=80)
     description = models.CharField(null=True, max_length=4000)
-    startingPrice = "$" + str(models.DecimalField(null=True, max_digits=10000, decimal_places=2))
+    startingPrice = models.DecimalField(null=True, max_digits=10000, decimal_places=2)
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=options)
     users_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -39,9 +38,13 @@ class listingsBids(models.Model):
     users_id = models.ForeignKey(User, on_delete=models.CASCADE)
     bids = models.DecimalField(max_digits=10000, decimal_places=2)
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"Bid of ${self.bids} on listing: {self.listing_id}"
+    
     
 
 class listingsComments(models.Model):
     users = models.ForeignKey(User, on_delete=models.CASCADE)
     comments = models.CharField(max_length=80)
-#TODO
+    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
