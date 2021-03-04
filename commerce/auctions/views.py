@@ -4,9 +4,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django import forms
 
 from .models import User
 
+
+class create_listing_form(forms.Form):
+    title = forms.CharField(label="Title", max_length=60)
+    description = forms.CharField(label="Description")
+    starting_bid = forms.FloatField(label="Starting Price")
+    imageURL = forms.URLField(label="Image URL")
+    #category = pull from DB table.
 
 def index(request):
     return render(request, "auctions/index.html")
@@ -63,15 +71,19 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-#@login_required
-#Create Listings
-    #TODO
-    #REQUIREMENTS 
+@login_required
+def create_listings(request):
+    if request.method == "POST":
+        print("got the form")
         #Specify title for listing
         #text based description
         #starting bid price 
         #optional field for URL for image of listing
         #category field(e.g. Fashion, Toys, Electronics, Home, etc.)
+    else:
+        return render(request, "auctions/create_listing.html", {
+            form=create_listing_form
+        })    
 
 
 #Active Listings Page 
