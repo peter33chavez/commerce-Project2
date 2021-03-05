@@ -98,9 +98,10 @@ def create_listing(request):
             if form.is_valid(): 
                 user_id = request.user
                 title = form["title"]
-                description = form["title"]
-                title = form["title"]
-                title = form["title"]
+                description = form["description"]
+                starting_price = form["starting_bid"]
+                imgURL = form["imageURL"]
+                category = form["category"]
         
         return render(request, "auctions/create_listing.html", {
             "form": new_form
