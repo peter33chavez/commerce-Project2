@@ -6,15 +6,33 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django import forms
 
-from .models import User
+from .models import User, auctionListings
 
 
 class create_listing_form(forms.Form):
+    options = (
+        ('Books', 'Books'),
+        ('Business & Industrial', 'Business & Industrial'),
+        ('Clothing, Shoes & Accessories', 'Clothing, Shoes & Accessories'),
+        ('Collectibles', 'Collectibles'),
+        ('Consumer Electronics', 'Consumer Electronics'),
+        ('Crafts', 'Crafts'),
+        ('Dolls & Bears', 'Dolls & Bears'),
+        ('Home & Garden', 'Home & Garden'),
+        ('Motors', 'Motors'),
+        ('Pet Supplies', 'Pet Supplies'),
+        ('Sporting Goods', 'Sporting Goods'),
+        ('Sports Mem, Cards & Fan Shop', 'Sports Mem, Cards & Fan Shop'),
+        ('Toys & Hobbies', 'Toys & Hobbies'),
+        ('Antiques', 'Antiques'),
+        ('Computers/Tablets & Networking','Computers/Tablets & Networking'),
+        ('Other','Other')
+    )
     title = forms.CharField(label="Title", max_length=60)
     description = forms.CharField(label="Description")
     starting_bid = forms.FloatField(label="Starting Price")
-    imageURL = forms.URLField(label="Image URL")
-    #category = pull from DB table.
+    imageURL = forms.URLField(label="Image URL", null=True, blank=True)
+    category = forms.Select(choices=options)
 
 def index(request):
     return render(request, "auctions/index.html")
@@ -71,18 +89,21 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-@login_required
-def create_listings(request):
-    if request.method == "POST":
-        print("got the form")
-        #Specify title for listing
-        #text based description
-        #starting bid price 
-        #optional field for URL for image of listing
-        #category field(e.g. Fashion, Toys, Electronics, Home, etc.)
-    else:
+def create_listing(request):
+    if not request.user.is_authenticated:
+        new_form = create_listing_form
+        if request.method == "POST":
+            form = create_listing_form(request.POST)
+            #check if users data is valid.
+            if form.is_valid(): 
+                user_id = request.user
+                title = form["title"]
+                description = form["title"]
+                title = form["title"]
+                title = form["title"]
+        
         return render(request, "auctions/create_listing.html", {
-            form=create_listing_form
+            "form": new_form
         })    
 
 
