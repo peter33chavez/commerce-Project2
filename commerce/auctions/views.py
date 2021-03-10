@@ -102,11 +102,12 @@ def create_listing(request):
                 starting_price = form["starting_bid"]
                 imgURL = form["imageURL"]
                 category = form["category"]
-                
-        
-        return render(request, "auctions/create_listing.html", {
-            "options":options
-        })    
+
+            return HttpResponceRedirect(reverse)    
+        else:
+            return render(request, "auctions/create_listing.html", {
+                "options":options
+            })    
 
 
 #Active Listings Page 
