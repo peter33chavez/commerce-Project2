@@ -4,35 +4,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django import forms
+from .forms import new_listing
 
 from .models import User, auctionListings
 
 
-class create_listing_form(forms.Form):
-    options = (
-        ('Books', 'Books'),
-        ('Business & Industrial', 'Business & Industrial'),
-        ('Clothing, Shoes & Accessories', 'Clothing, Shoes & Accessories'),
-        ('Collectibles', 'Collectibles'),
-        ('Consumer Electronics', 'Consumer Electronics'),
-        ('Crafts', 'Crafts'),
-        ('Dolls & Bears', 'Dolls & Bears'),
-        ('Home & Garden', 'Home & Garden'),
-        ('Motors', 'Motors'),
-        ('Pet Supplies', 'Pet Supplies'),
-        ('Sporting Goods', 'Sporting Goods'),
-        ('Sports Mem, Cards & Fan Shop', 'Sports Mem, Cards & Fan Shop'),
-        ('Toys & Hobbies', 'Toys & Hobbies'),
-        ('Antiques', 'Antiques'),
-        ('Computers/Tablets & Networking','Computers/Tablets & Networking'),
-        ('Other','Other')
-    )
-    title = forms.CharField(label="Title", max_length=60)
-    description = forms.CharField(label="Description")
-    starting_bid = forms.FloatField(label="Starting Price")
-    imageURL = forms.URLField(label="Image URL", null=True, blank=True)
-    category = forms.Select(choices=options)
 
 def index(request):
     return render(request, "auctions/index.html")
@@ -89,24 +65,21 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-def create_listing(request):
+def create_listing(request): 
     if request.user.is_authenticated:
-        options = auctionListings.category.all()
+        form = new_listing()
         if request.method == "POST":
-            form = request.POST
-            #check if users data is valid.
-            if form.is_valid(): 
-                user_id = request.user
-                title = form["title"]
-                description = form["description"]
-                starting_price = form["starting_bid"]
-                imgURL = form["imageURL"]
-                category = form["category"]
-
-            return HttpResponceRedirect(reverse)    
+            form = new_listing(request.POST)
+            if form.is_valid():
+                #need to figure out how to store the users_id in that same form before saving.
+                form.users_id = request.user
+                #form.save()
+                return render(request, "auctions/create_listing.html", {
+                    'message':"Your Listing is now posted"
+                })    
         else:
             return render(request, "auctions/create_listing.html", {
-                "options":options
+                'form':form
             })    
 
 
