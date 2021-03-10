@@ -90,10 +90,10 @@ def register(request):
         return render(request, "auctions/register.html")
 
 def create_listing(request):
-    if not request.user.is_authenticated:
-        new_form = create_listing_form
+    if request.user.is_authenticated:
+        options = auctionListings.category.all()
         if request.method == "POST":
-            form = create_listing_form(request.POST)
+            form = request.POST
             #check if users data is valid.
             if form.is_valid(): 
                 user_id = request.user
@@ -102,9 +102,10 @@ def create_listing(request):
                 starting_price = form["starting_bid"]
                 imgURL = form["imageURL"]
                 category = form["category"]
+                
         
         return render(request, "auctions/create_listing.html", {
-            "form": new_form
+            "options":options
         })    
 
 
