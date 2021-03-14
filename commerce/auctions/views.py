@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .forms import new_listing
+from .forms import listingForm
 
 from .models import User, auctionListings
 
@@ -67,20 +67,20 @@ def register(request):
 
 def create_listing(request): 
     if request.user.is_authenticated:
-        form = new_listing()
         if request.method == "POST":
-            form = new_listing(request.POST)
+            form = listingForm(request.POST)
             if form.is_valid():
-                #need to figure out how to store the users_id in that same form before saving.
-                form.users_id = request.user
-                #form.save()
+                listing = form.save(commit=False)
+                listing.user = request.user
+                listing.save()
                 return render(request, "auctions/create_listing.html", {
                     'message':"Your Listing is now posted"
-                })    
+                })
         else:
-            return render(request, "auctions/create_listing.html", {
-                'form':form
-            })    
+            form = listingForm()          
+        return render(request, "auctions/create_listing.html", {
+            'form':form
+        })    
 
 
 #Active Listings Page 

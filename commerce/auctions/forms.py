@@ -1,8 +1,11 @@
 from django import forms
 from .models import auctionListings
 
-class new_listing(forms.ModelForm):
+class listingForm(forms.ModelForm):
     class Meta:
         model = auctionListings
-        fields = '__all__'
-        widgets = {'users_id':forms.HiddenInput()}
+        fields = ('title','description','startingPrice','imgUrl', 'category')
+        labels = { 
+            'imgUrl': 'Image Url',
+            'startingPrice': 'Starting Price' 
+         }

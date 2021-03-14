@@ -29,13 +29,13 @@ class auctionListings(models.Model):
     startingPrice = models.DecimalField(null=True, max_digits=10000, decimal_places=2)
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=options)
-    users_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
 class listingsBids(models.Model):
-    users_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     bids = models.DecimalField(max_digits=10000, decimal_places=2)
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
 
@@ -45,6 +45,6 @@ class listingsBids(models.Model):
     
 
 class listingsComments(models.Model):
-    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comments = models.CharField(max_length=80)
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
