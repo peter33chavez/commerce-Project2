@@ -11,7 +11,20 @@ from .models import User, auctionListings
 
 
 def index(request):
-    return render(request, "auctions/index.html")
+    #activeListings = auctionListings()
+
+
+
+    return render(request, "auctions/index.html")#, {
+        #'activeListings': activeListings
+    #})
+    #Active Listings Page 
+    #TODO
+    #REQUIREMENTS
+    #this is shown on the index page 
+    #show all current active listings
+    #should display at least (the title, description, current price, and photo (if one exists for the listing))
+
 
 
 def login_view(request):
@@ -71,7 +84,7 @@ def create_listing(request):
             form = listingForm(request.POST)
             if form.is_valid():
                 listing = form.save(commit=False)
-                listing.user = request.user
+                listing.user_id = request.user
                 listing.save()
                 return render(request, "auctions/create_listing.html", {
                     'message':"Your Listing is now posted"
@@ -83,12 +96,6 @@ def create_listing(request):
         })    
 
 
-#Active Listings Page 
-    #TODO
-    #REQUIREMENTS
-    #this is shown on the index page 
-    #show all current active listings
-    #should display at least (the title, description, current price, and photo (if one exists for the listing))
 
 #@login_required
 #Listing Page

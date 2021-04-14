@@ -3,13 +3,13 @@
 {% block body %}
     <h2>Active Listings</h2>
     <ul class= 'activeListings'>
-        {% for activeListing in activeListings %}
+        {% for listing in activeListings %}
             <li>
-                <a class='listing-item' href={% url "listing_page" activelisting %}>
-                {{ activeListing.imgUrl }} 
-                {{ activeListing.title }} 
-                {{ activeListing.description }} 
-                {{ activeListing.startingPrice }} 
+                <a class='listing-item' href={% url "listing_page" listing.id %}>
+                {{ listing.imgUrl }} 
+                {{ listing.title }} 
+                {{ listing.description }} 
+                {{ listing.startingPrice }} 
                 </a>
             </li>   
         {%endfor%}

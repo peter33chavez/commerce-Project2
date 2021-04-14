@@ -1,3 +1,31 @@
 body {
-    padding: 10px;
+    background: #42413D;
+    
+}
+.navbar{
+    margin: 0;
+}
+.bg-dark{
+    background-color: #FFCE2B!important;
+}
+
+.navbar-brand h1, .nav-link{
+    color: #707070;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+.logo-item a{
+    color: #707070;
+    text-decoration: none;
+}
+
+.navbar-selects{
+    display: flex;
+    justify-content: flex-end;
+}
+.nav-link{
+    color: #707070;
 }
