@@ -3,7 +3,7 @@ body {
     
 }
 .navbar{
-    margin: 0;
+    margin-bottom: 80px;
 }
 .bg-dark{
     background-color: #FFCE2B!important;
@@ -27,5 +27,12 @@ body {
     justify-content: flex-end;
 }
 .nav-link{
-    color: #707070;
+    color: #707070!important;
+
+}
+
+.sign-in-message{
+    position: relative;
+    top: 8px;
+    
 }
