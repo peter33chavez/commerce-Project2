@@ -1,6 +1,6 @@
 body {
-    background: #42413D;
-    
+    background: #212121;
+    color: #B2AFAC;
 }
 .navbar{
     margin-bottom: 80px;
@@ -36,6 +36,7 @@ body {
 
 
 .sign-in-message{
+    color: #212121;
     position: relative;
     top: 8px;
     
