@@ -2,6 +2,9 @@ body {
     background: #212121;
     color: #B2AFAC;
 }
+.title{
+    margin-left: 140px;
+}
 .navbar{
     margin-bottom: 80px;
 }
@@ -41,3 +44,22 @@ body {
     top: 8px;
     
 }
+
+.form-box{
+    background: #212121;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
