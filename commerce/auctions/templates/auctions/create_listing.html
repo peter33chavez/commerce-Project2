@@ -10,7 +10,9 @@
     </div>
 <form class='create-listing'action="{% url 'create_listing' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <table>
+        {{ form.as_table }}
+    </table>
     <div class='create-listing-btn'>
         <input class="btn btn-dark" type="submit" value="Post">
     </div>    

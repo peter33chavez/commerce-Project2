@@ -84,7 +84,7 @@ def create_listing(request):
             form = listingForm(request.POST)
             if form.is_valid():
                 listing = form.save(commit=False)
-                listing.user_id = request.user
+                listing.user_id = request.user.id
                 listing.save()
                 return render(request, "auctions/create_listing.html", {
                     'message':"Your Listing is now posted"
