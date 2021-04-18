@@ -2,8 +2,11 @@ body {
     background: #212121;
     color: #B2AFAC;
 }
+hr{
+    background: #B2AFAC;
+}
 .title{
-    margin-left: 140px;
+    margin: 0 80px;
 }
 .navbar{
     margin-bottom: 80px;
@@ -49,16 +52,18 @@ body {
     background: #212121;
 }
 
-.login-form{
+.login-form, .register-form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
 }
 
-.login-content{
+.login-content, .register-content{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 50px 0;
+
 }
 
 
