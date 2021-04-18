@@ -4,10 +4,15 @@
 {%if message %}
     {{ message }}
 {%endif%}
-<h2> Create New Listing</h2>
-<form action="{% url 'create_listing' %}" method="post">
+<div class='title'>
+        <h2>Create New Listing</h2>
+    <hr>
+    </div>
+<form class='create-listing'action="{% url 'create_listing' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type='submit'>Post</button>
+    <div class='create-listing-btn'>
+        <input class="btn btn-dark" type="submit" value="Post">
+    </div>    
 </form>
 {%endblock%}

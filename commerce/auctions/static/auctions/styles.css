@@ -31,6 +31,7 @@ hr{
 .navbar-selects{
     display: flex;
     justify-content: flex-end;
+    margin-right: 50px;
 }
 .nav-link{
     color: #707070!important;
@@ -66,5 +67,17 @@ hr{
 
 }
 
+.create-listing{
+    margin: 0 80px;
+}
 
-
+.create-listing-btn{
+    text-align: right;
+}
+.btn{
+    padding: 5px 30px!important;
+}
+.new-listing-description{
+    width: 300px;
+    height: 200px;
+}
