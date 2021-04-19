@@ -9,7 +9,7 @@ class listingForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control form-box bg-dark'}),
             'description': forms.Textarea(attrs={'class': 'form-control form-box bg-dark'}),
             'startingPrice': forms.NumberInput(attrs={'class': 'form-control form-box bg-dark'}),
-            'imgUrl': forms.TextInput(attrs={'class': 'form-control form-box bg-dark'}),
+            'imgUrl': forms.TextInput(attrs={'class': 'form-control form-box bg-dark', 'placeholder': '*optional*'}),
             'category': forms.Select(attrs={'class': 'form-control form-box bg-dark'})
         }
         labels = { 
