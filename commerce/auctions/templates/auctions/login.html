@@ -3,16 +3,16 @@
 {% block body %}
        
     {% if message %}
-        <div>{{ message }}</div>
+        <div class='login-error danger'>{{ message }}</div>
     {% endif %}
     <div class='login-content'>
         <form class='login-form' action="{% url 'login' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <input autofocus class="form-control form-box" type="text" name="username" placeholder="Username">
+                <input autofocus class="form-control bg-dark" type="text" name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <input class="form-control form-box" type="password" name="password" placeholder="Password">
+                <input class="form-control bg-dark" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
                 <input class="btn btn-dark" type="submit" value="Login">

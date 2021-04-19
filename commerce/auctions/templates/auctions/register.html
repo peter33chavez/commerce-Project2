@@ -12,16 +12,16 @@
         <form class='register-form'action="{% url 'register' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
-                <input class="form-control form-box" autofocus type="text" name="username" placeholder="Username">
+                <input class="form-control bg-dark" autofocus type="text" name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <input class="form-control form-box" type="email" name="email" placeholder="Email Address">
+                <input class="form-control bg-dark" type="email" name="email" placeholder="Email Address">
             </div>
             <div class="form-group">
-                <input class="form-control form-box" type="password" name="password" placeholder="Password">
+                <input class="form-control bg-dark" type="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <input class="form-control form-box" type="password" name="confirmation" placeholder="Confirm Password">
+                <input class="form-control bg-dark" type="password" name="confirmation" placeholder="Confirm Password">
             </div>
             <input class="btn btn-dark" type="submit" value="Register">
         </form>

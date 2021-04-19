@@ -8,13 +8,15 @@
         <h2>Create New Listing</h2>
     <hr>
     </div>
-<form class='create-listing'action="{% url 'create_listing' %}" method="post">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <div class='create-listing-btn'>
-        <input class="btn btn-dark" type="submit" value="Post">
-    </div>    
-</form>
+<div class='from-group'>    
+    <form class='create-listing'action="{% url 'create_listing' %}" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div class='create-listing-btn'>
+            <input class="btn btn-dark" type="submit" value="Post">
+        </div>    
+    </form>
+</div>    
 {%endblock%}

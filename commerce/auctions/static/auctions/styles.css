@@ -11,8 +11,12 @@ hr{
 .navbar{
     margin-bottom: 80px;
 }
-.bg-dark{
+.bg-light{
     background-color: #FFCE2B!important;
+}
+
+.bg-dark{
+    background-color: #212121!important;
 }
 
 .navbar-brand h1, .nav-link{
@@ -41,16 +45,15 @@ hr{
     color: #4e4e4e!important;
 }
 
-
+.login-error{
+    text-align: center;
+    color: red;
+}
 .sign-in-message{
     color: #212121;
     position: relative;
     top: 8px;
     
-}
-
-.form-box{
-    background: #212121;
 }
 
 .login-form, .register-form{
@@ -76,4 +79,8 @@ hr{
 }
 .btn{
     padding: 5px 30px!important;
+}
+
+.form-control{
+    margin-bottom: 10px;
 }
