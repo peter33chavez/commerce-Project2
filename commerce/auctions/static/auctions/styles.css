@@ -95,7 +95,16 @@ hr{
     margin-top: 40px;
 }
 
-.listing-container{
-    margin: 0 90px;
-    outline: 5px #FFFF;
+.active-listings{
+    margin: 40px 100px;
+}
+.listing-item{
+    display: flex;
+    align-items: center;
+}
+.listing-img img{
+    width: 250px;
+}
+.listing-details{
+    
 }

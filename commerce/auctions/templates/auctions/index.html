@@ -10,19 +10,20 @@
         <hr>
     </div>
 
-    <ul class= 'activeListings'>
+    <div class= 'active-listings'>
         {% comment %} {% for listing in activeListings %} {% endcomment %}
-            <li class='listing-container'>
-                <a class='listing-item' href='#'>
-                <div class='item-img'>
-                    <img  src='#' alt='Listed Item'>
+            <div class='listing-item'>
+                <div class='listing-img'>
+                    <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
                 </div>
-                <div class='title'>Shoes</dv>
-                <div class='description'>testing format for listing</dv>
-                <div class='price'>20.00</dv>
-                </a>
-            </li>   
+                <div class='listing-details'>
+                    <div class='title'>Shoes</dv>
+                    <div class='description'>testing format for listing</dv>
+                    <button class='view-btn' type='submit'>View</button>
+                    <div class='price'><p>$20.00</p></div>
+                </div>   
+            </div> 
         {% comment %} {%endfor%} {% endcomment %}
-    </ul>
+    </div>
     
 {% endblock %}
