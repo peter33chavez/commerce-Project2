@@ -1,7 +1,7 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <div class='title dashboard'>
+    <div class=' dashboard'>
         <h1>Dashboard</h1>
     </div>
     <div class='title current-listings-index'>
@@ -20,7 +20,10 @@
                     <div class='listing-price'>
                         <strong><p>Current Bid: $20.00</p></strong>
                     </div>
-                    <div class='listing- description'>testing format for listing</div>
+                    <div class='listing-description'>
+                        {% comment %} {{ description|truncatechars:255 }} {% endcomment %}
+                        <p>testing format for listing fjefijfefjfifjiffjeifjfiefefijfifjeifjfiefjeifjfifeifjfiejij thththththththththt<p>
+                    </div>
                     <button class='btn view-btn' type='submit'>View</button>
                 </div>   
             </div> 

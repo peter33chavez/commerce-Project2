@@ -1,3 +1,5 @@
+
+
 body {
     background: #212121;
     color: #B2AFAC;
@@ -7,11 +9,12 @@ hr{
 }
 .title{
     margin: 0 80px;
+    font-family: 'Montserrat', sans-serif;
     
 }
 .navbar{
     margin-bottom: 40px;
-    box-shadow:  0 30px 30px rgba(0,0,0,.2);
+    box-shadow: 0 0 30px 30px rgba(0,0,0,.2);
 }
 .bg-light{
     background-color: #FFCE2B!important;
@@ -23,6 +26,8 @@ hr{
 
 .navbar-brand h1, .nav-link{
     color: #707070;
+    
+    
 }
 
 .logo-container{
@@ -107,10 +112,17 @@ hr{
 }
 .listing-item{ 
     display: flex;
+    padding: 10px;
+    box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
     
+}
+
+.listing-img{
+    align-self: center;
 }
 .listing-img img{
     width: 250px;
+    border-radius: 5px;
 }
 .listing-details{
     margin-left: 50px;
@@ -123,5 +135,14 @@ hr{
     font-size: 18px;
 }
 .listing-price{
-    font-size: 13px;
+    font-size: 12px;
+}
+.listing-description{
+    font-family: 'Montserrat', sans-serif;
+    width: 400px;
+    height: 90px;
+}
+.view-btn{
+    margin: 20px 0 5px 0;
+    
 }
