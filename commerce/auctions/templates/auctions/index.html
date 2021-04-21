@@ -3,7 +3,6 @@
 {% block body %}
     <div class='title dashboard'>
         <h1>Dashboard</h1>
-        <hr>
     </div>
     <div class='title current-listings-index'>
         <h3>Active Listings</h3>
@@ -17,10 +16,12 @@
                     <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
                 </div>
                 <div class='listing-details'>
-                    <div class='title'>Shoes</dv>
-                    <div class='description'>testing format for listing</dv>
-                    <button class='view-btn' type='submit'>View</button>
-                    <div class='price'><p>$20.00</p></div>
+                    <div class='listing-title'><strong>Shoes</strong></div>
+                    <div class='listing-price'>
+                        <strong><p>Current Bid: $20.00</p></strong>
+                    </div>
+                    <div class='listing- description'>testing format for listing</div>
+                    <button class='btn view-btn' type='submit'>View</button>
                 </div>   
             </div> 
         {% comment %} {%endfor%} {% endcomment %}

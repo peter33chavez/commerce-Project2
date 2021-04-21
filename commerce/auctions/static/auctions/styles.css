@@ -7,9 +7,11 @@ hr{
 }
 .title{
     margin: 0 80px;
+    
 }
 .navbar{
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+    box-shadow:  0 30px 30px rgba(0,0,0,.2);
 }
 .bg-light{
     background-color: #FFCE2B!important;
@@ -31,7 +33,9 @@ hr{
     color: #707070;
     text-decoration: none;
 }
-
+.logo-item a h1{
+    font-weight: 600;
+}
 .navbar-selects{
     display: flex;
     justify-content: flex-end;
@@ -90,6 +94,9 @@ hr{
 }
 .dashboard{
     margin: 0 50px;
+    padding: 10px;
+    box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
+    
 }
 .current-listings-index{
     margin-top: 40px;
@@ -98,13 +105,23 @@ hr{
 .active-listings{
     margin: 40px 100px;
 }
-.listing-item{
+.listing-item{ 
     display: flex;
-    align-items: center;
+    
 }
 .listing-img img{
     width: 250px;
 }
 .listing-details{
-    
+    margin-left: 50px;
+}
+.btn{
+    background: #FFCE2B!important;
+    color: #707070!important;
+}
+.listing-title{
+    font-size: 18px;
+}
+.listing-price{
+    font-size: 13px;
 }
