@@ -94,3 +94,8 @@ hr{
 .current-listings-index{
     margin-top: 40px;
 }
+
+.listing-container{
+    margin: 0 90px;
+    outline: 5px #FFFF;
+}
