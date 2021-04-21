@@ -1,7 +1,10 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <div class='title'>
+        <h2>Active Listings</h2>
+        <hr>
+    </div>
     <ul class= 'activeListings'>
         {% for listing in activeListings %}
             <li>
