@@ -1,21 +1,30 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <div class='title'>
-        <h2>Active Listings</h2>
+    <div class='title dashboard'>
+        <h1>Dashboard</h1>
         <hr>
     </div>
+    <div class='title current-listings-index'>
+        <h3>Active Listings</h3>
+        <hr>
+    </div>
+
     <ul class= 'activeListings'>
-        {% for listing in activeListings %}
+        {% comment %} {% for listing in activeListings %} {% endcomment %}
             <li>
-                <a class='listing-item' href={% url "listing_page" listing.id %}>
-                {{ listing.imgUrl }} 
-                {{ listing.title }} 
-                {{ listing.description }} 
-                {{ listing.startingPrice }} 
+                <a class='listing-item' href='#'>
+                <div class='item-img'>
+                    <img  src='#' alt='Listed Item'>
+                </div>
+                <div class='title'>Shoes</dv>
+                <div class='description'>testing format for listing</dv>
+                <div class='price'>20.00</dv>
+                
+               
                 </a>
             </li>   
-        {%endfor%}
+        {% comment %} {%endfor%} {% endcomment %}
     </ul>
     
 {% endblock %}

@@ -88,3 +88,9 @@ hr{
     margin-left: 10px;
     color: #B2AFAC;
 }
+.dashboard{
+    margin: 0 50px;
+}
+.current-listings-index{
+    margin-top: 40px;
+}
