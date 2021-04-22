@@ -1,21 +1,19 @@
-
-
+/* Bootstrap/customer edits */
 body {
     background: #212121;
     color: #B2AFAC;
 }
+
 hr{
     background: #B2AFAC;
 }
+
 .title{
     margin: 0 80px;
     font-family: 'Montserrat', sans-serif;
     
 }
-.navbar{
-    margin-bottom: 40px;
-    box-shadow: 0 0 30px 30px rgba(0,0,0,.2);
-}
+
 .bg-light{
     background-color: #FFCE2B!important;
 }
@@ -24,46 +22,84 @@ hr{
     background-color: #212121!important;
 }
 
-.navbar-brand h1, .nav-link{
-    color: #707070;
-    
-    
+.btn{
+    padding: 5px 30px!important;
+    margin-bottom: 20px;
+    background: #FFCE2B!important;
+    color: #707070!important;
+}
+
+.btn:hover{
+    background: #ffc400!important;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #B2AFAC!important;
+}
+
+/* NavBar */
+.logo-item a h1{
+    font-weight: 600;
 }
 
 .logo-container{
     display: flex;
     align-items: center;
 }
+
 .logo-item a{
     color: #707070;
     text-decoration: none;
 }
-.logo-item a h1{
-    font-weight: 600;
+
+.navbar{
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px 30px rgba(0,0,0,.2);
 }
+
+.navbar-brand h1, .nav-link{
+    color: #707070;
+    
+    
+}
+
 .navbar-selects{
     display: flex;
     justify-content: flex-end;
     margin-right: 50px;
 }
+
 .nav-link{
     color: #707070!important;
     font-size: 15px;
     
 }
+
 .nav-link:hover{
     color: #4e4e4e!important;
 }
 
-.login-error{
-    text-align: center;
-    color: red;
-}
 .sign-in-message{
     color: #212121;
     position: relative;
     top: 8px;
     left: 20px;
+}
+
+/*  Login/Register Page */
+
+.login-content, .register-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.login-error{
+    text-align: center;
+    color: red;
 }
 
 .login-form, .register-form{
@@ -72,13 +108,7 @@ hr{
     align-items: center; 
 }
 
-.login-content, .register-content{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 0;
-
-}
+/* Create Listing Page */
 
 .create-listing{
     margin: 0 80px;
@@ -87,62 +117,61 @@ hr{
 .create-listing-btn{
     text-align: right;
 }
-.btn{
-    padding: 5px 30px!important;
-    margin-bottom: 20px;
+
+/* Dashboard */
+
+.active-listings{
+    margin: 40px 100px;
 }
 
-.form-control{
-    margin-bottom: 10px;
-    margin-left: 10px;
-    color: #B2AFAC!important;
+.current-listings-index{
+    margin-top: 40px;
 }
+
 .dashboard{
     margin: 0 50px;
     padding: 10px;
     box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
     
 }
-.current-listings-index{
-    margin-top: 40px;
+
+.listing-description{
+    font-family: 'Montserrat', sans-serif;
+    width: 400px;
+    height: 90px;
 }
 
-.active-listings{
-    margin: 40px 100px;
-}
 .listing-item{ 
     display: flex;
     padding: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
+    margin-bottom: 30px;
+    
+}
+
+.listing-details{
+    margin-left: 50px;
     
 }
 
 .listing-img{
     align-self: center;
 }
+
 .listing-img img{
-    width: 250px;
+    max-width: 250px;
     border-radius: 5px;
 }
-.listing-details{
-    margin-left: 50px;
+
+.listing-price{
+    font-size: 12px;
 }
-.btn{
-    background: #FFCE2B!important;
-    color: #707070!important;
-}
+
 .listing-title{
     font-size: 18px;
     color: rgb(226, 225, 225);
 }
-.listing-price{
-    font-size: 12px;
-}
-.listing-description{
-    font-family: 'Montserrat', sans-serif;
-    width: 400px;
-    height: 90px;
-}
+
 .view-btn{
     margin: 20px 0 5px 0;
     
