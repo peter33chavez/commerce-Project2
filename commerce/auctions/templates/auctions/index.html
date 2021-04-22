@@ -10,24 +10,29 @@
     </div>
 
     <div class= 'active-listings'>
-        {% comment %} {% for listing in activeListings %} {% endcomment %}
+        {% for listing in listings %}
             <div class='listing-item'>
+                {%if listing.imgUrl is None %}
                 <div class='listing-img'>
                     <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
                 </div>
+                {% else %}
+                    <div class='listing-img'>
+                    <img  src='{{listing.imgUrl}}' alt='Listed Item'>
+                </div>
+                {% endif %}
                 <div class='listing-details'>
-                    <div class='listing-title'><strong>Shoes</strong></div>
+                    <div class='listing-title'><strong>{{listing.title}}</strong></div>
                     <div class='listing-price'>
-                        <strong><p>Current Bid: $20.00</p></strong>
+                        <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
                     </div>
                     <div class='listing-description'>
-                        {% comment %} {{ description|truncatechars:255 }} {% endcomment %}
-                        <p>testing format for listing fjefijfefjfifjiffjeifjfiefefijfifjeifjfiefjeifjfifeifjfiejij thththththththththt<p>
+                        <p>{{ listing.description|truncatechars:190 }}<p>
                     </div>
                     <button class='btn view-btn' type='submit'>View</button>
                 </div>   
             </div> 
-        {% comment %} {%endfor%} {% endcomment %}
+        {%endfor%} 
     </div>
     
 {% endblock %}

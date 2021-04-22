@@ -11,13 +11,11 @@ from .models import User, auctionListings
 
 
 def index(request):
-    #activeListings = auctionListings()
+    activeListings = auctionListings.objects.all()
 
-
-
-    return render(request, "auctions/index.html")#, {
-        #'activeListings': activeListings
-    #})
+    return render(request, "auctions/index.html", {
+        'listings': activeListings
+    })
     #Active Listings Page 
     #TODO
     #REQUIREMENTS

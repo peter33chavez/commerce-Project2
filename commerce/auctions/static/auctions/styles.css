@@ -63,7 +63,7 @@ hr{
     color: #212121;
     position: relative;
     top: 8px;
-    
+    left: 20px;
 }
 
 .login-form, .register-form{
@@ -95,7 +95,7 @@ hr{
 .form-control{
     margin-bottom: 10px;
     margin-left: 10px;
-    color: #B2AFAC;
+    color: #B2AFAC!important;
 }
 .dashboard{
     margin: 0 50px;
@@ -133,6 +133,7 @@ hr{
 }
 .listing-title{
     font-size: 18px;
+    color: rgb(226, 225, 225);
 }
 .listing-price{
     font-size: 12px;
