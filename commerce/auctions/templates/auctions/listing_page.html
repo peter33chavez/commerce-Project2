@@ -4,3 +4,24 @@
         <h2>{{listing.title}}</h2>
     <hr>
     </div>
+    <div class='listing-container'>
+        {%if listing.imgUrl is None %}
+                <div class='listing-page-img'>
+                    <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
+                </div>
+                {% else %}
+                    <div class='listing-page-img'>
+                    <img  src='{{listing.imgUrl}}' alt='Listed Item'>
+                </div>
+                {% endif %}
+                <div class='listing-page-details'>
+                    <div class='listing-page-title'><strong>{{listing.title}}</strong></div>
+                    <div class='listing-page-price'>
+                        <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
+                    </div>
+                    <div class='listing-page-description'>
+                        <p>{{ listing.description|truncatechars:190 }}<p>
+                    </div>
+                    <button class='btn view-btn' type='submit'>View</button>
+                </div>   
+    </div>

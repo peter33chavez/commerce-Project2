@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import listingForm
 
-from .models import User, auctionListings
+from .models import *
 
 
 
@@ -89,10 +89,7 @@ def create_listing(request):
 
 
 def listing_page(request, listing_id):
-
-    listing = auctionListings.object.id(listing_id)
-
-
+    listing = auctionListings.objects.get(pk=listing_id)
     return render(request, "auctions/listing_page.html",{
         'listing': listing
     })
