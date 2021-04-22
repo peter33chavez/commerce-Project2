@@ -16,15 +16,7 @@ def index(request):
     return render(request, "auctions/index.html", {
         'listings': activeListings
     })
-    #Active Listings Page 
-    #TODO
-    #REQUIREMENTS
-    #this is shown on the index page 
-    #show all current active listings
-    #should display at least (the title, description, current price, and photo (if one exists for the listing))
-
-
-
+    
 def login_view(request):
     if request.method == "POST":
 
@@ -95,8 +87,15 @@ def create_listing(request):
 
 
 
-#@login_required
-#Listing Page
+
+def listing_page(request, listing_id):
+
+    listing = auctionListings.object.id(listing_id)
+
+
+    return render(request, "auctions/listing_page.html",{
+        'listing': listing
+    })
     #TODO
     #REQUIREMENTS
 
@@ -132,10 +131,3 @@ def create_listing(request):
     #categories page should show all available categories. and when you select a category you should be brought to search results with that category in listening 
     
     #all results should be clickable 
-
-
-#Django Admin Interface
-    #TODO
-    #REQUIREMENTS
-
-    #create a createsuperuser account
