@@ -11,7 +11,7 @@ hr{
 .title{
     margin: 0 80px;
     font-family: 'Montserrat', sans-serif;
-    
+
 }
 
 .bg-light{
@@ -61,8 +61,8 @@ hr{
 
 .navbar-brand h1, .nav-link{
     color: #707070;
-    
-    
+
+
 }
 
 .navbar-selects{
@@ -74,7 +74,7 @@ hr{
 .nav-link{
     color: #707070!important;
     font-size: 15px;
-    
+
 }
 
 .nav-link:hover{
@@ -105,7 +105,7 @@ hr{
 .login-form, .register-form{
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
 /* Create Listing Page */
@@ -132,7 +132,7 @@ hr{
     margin: 0 50px;
     padding: 10px;
     box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
-    
+
 }
 
 .listing-description{
@@ -141,17 +141,17 @@ hr{
     height: 90px;
 }
 
-.listing-item{ 
+.listing-item{
     display: flex;
     padding: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
     margin-bottom: 30px;
-    
+
 }
 
 .listing-details{
     margin-left: 50px;
-    
+
 }
 
 .listing-img{
@@ -174,5 +174,22 @@ hr{
 
 .view-btn{
     margin: 20px 0 5px 0;
+
+}
+
+/* listing page */
+
+.listing-container{
+    display: flex;
+    flex-direction: column;
+    margin: 40px 100px;
+}
+
+.listing-page-img{
+    align-self: center;
+}
+
+.listing-page-details{
+    margin-top: 50px;
     
 }
