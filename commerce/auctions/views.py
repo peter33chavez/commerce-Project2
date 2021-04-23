@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .forms import listingForm
+from .forms import *
 
 from .models import *
 
@@ -90,9 +90,16 @@ def create_listing(request):
 
 def listing_page(request, listing_id):
     listing = auctionListings.objects.get(pk=listing_id)
-    return render(request, "auctions/listing_page.html",{
-        'listing': listing
-    })
+    if request.user.is_authenticated:
+        bid_form = BidForm()
+
+
+
+        return render(request, "auctions/listing_page.html",{
+        'listing': listing,
+        'Bid_option': bid_form,
+        'comments': listing.get_comments.all()
+        })
     #TODO
     #REQUIREMENTS
 

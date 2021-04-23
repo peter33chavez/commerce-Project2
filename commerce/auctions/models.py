@@ -5,6 +5,10 @@ from django.db import models
 class User(AbstractUser):
     pass
  
+
+    def __str__(self):
+        return f"Bid of ${self.bids} on listing: {self.listing_id}"
+    
 class auctionListings(models.Model):
     options = (
         ('Books', 'Books'),
@@ -30,6 +34,7 @@ class auctionListings(models.Model):
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=options)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    topBid = models.DecimalField(null=True, blank=True, max_digits=10000, decimal_places=2)
 
     def __str__(self):
         return self.title
@@ -37,14 +42,10 @@ class auctionListings(models.Model):
 class listingsBids(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bids = models.DecimalField(max_digits=10000, decimal_places=2)
-    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return f"Bid of ${self.bids} on listing: {self.listing_id}"
-    
+    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True, related_name='bids')
     
 
 class listingsComments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comments = models.CharField(max_length=80)
-    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
+    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True, related_name='get_comments')

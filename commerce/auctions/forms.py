@@ -1,5 +1,5 @@
 from django import forms
-from .models import auctionListings
+from .models import *
 
 class listingForm(forms.ModelForm):
     class Meta:
@@ -16,4 +16,15 @@ class listingForm(forms.ModelForm):
             'imgUrl': 'Image Url',
             'startingPrice': 'Starting Price' 
          }
+
+class BidForm(forms.ModelForm):
+    class Meta:
+        model = listingsBids
+        fields = ('bids',)
+        widgets={
+            'bids': forms.NumberInput(attrs={'class': 'current-bid'})
+        }
+        labels={
+            'bids': 'Bid: $'
+        }
 

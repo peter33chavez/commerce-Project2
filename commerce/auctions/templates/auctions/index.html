@@ -23,9 +23,15 @@
                 {% endif %}
                 <div class='listing-details'>
                     <div class='listing-title'><strong>{{listing.title}}</strong></div>
-                    <div class='listing-price'>
-                        <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
+                    {% if listing.topBid is None %}
+                        <div class='listing-price'>
+                            <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
+                        </div>
+                    {% else %}
+                        <div class='listing-price'>
+                        <strong><p>Current Bid: ${{listing.topBid|floatformat:2}}</p></strong>
                     </div>
+                    {% endif %}
                     <div class='listing-description'>
                         <p>{{ listing.description|truncatechars:190 }}<p>
                     </div>
