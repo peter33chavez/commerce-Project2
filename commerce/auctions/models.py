@@ -7,7 +7,7 @@ class User(AbstractUser):
  
 
     def __str__(self):
-        return f"Bid of ${self.bids} on listing: {self.listing_id}"
+        return f"{self.username}"
     
 class auctionListings(models.Model):
     options = (
@@ -43,10 +43,16 @@ class auctionListings(models.Model):
 class listingsBids(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bids = models.DecimalField(max_digits=10000, decimal_places=2)
-    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True, related_name='bids')
+    listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return f"Bid:${self.bids} by {self.user}"
     
 
 class listingsComments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comments = models.CharField(max_length=80)
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True, related_name='get_comments')
+
+    def __str__(self):
+        return f"{self.user.username}"

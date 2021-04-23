@@ -32,6 +32,7 @@
                     <div class='action-items'>
                         {%if bid_option %} 
                             <div class=' form-group bid-form'>
+                                {% csrf_token %}
                                 {{bid_option}}
                                 <button class='btn bid-btn' type='submit'>Bid</button>
                             </div>
