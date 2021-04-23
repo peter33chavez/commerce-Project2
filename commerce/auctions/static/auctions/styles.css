@@ -179,17 +179,50 @@ hr{
 
 /* listing page */
 
+.action-items{
+    display:flex;
+}
+
+.bid-btn{
+    margin-right: 20px;
+}
+
+.bid-form{
+    display:flex;
+    margin: 0;
+}
+
+.bid-form-box{
+    width: 100px;
+    margin: 0 10px 0 0;
+}
 .listing-container{
     display: flex;
     flex-direction: column;
     margin: 40px 100px;
 }
 
+.listing-page-title, .listing-page-price{
+    color: rgb(226, 225, 225);
+}
+
 .listing-page-img{
     align-self: center;
+    width: 595px;
+}
+
+.listing-page-img img{
+    max-width: 595px;
+    max-height: auto;
 }
 
 .listing-page-details{
-    margin-top: 50px;
+    margin: 10px 0 0 30px;
+
+}
+.vl{
+    border-left: 2px solid #B2AFAC;
+    height: 40px;
+    padding: 0 10px;
     
 }

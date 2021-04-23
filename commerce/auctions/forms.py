@@ -22,9 +22,9 @@ class BidForm(forms.ModelForm):
         model = listingsBids
         fields = ('bids',)
         widgets={
-            'bids': forms.NumberInput(attrs={'class': 'current-bid'})
+            'bids': forms.NumberInput(attrs={'class':'form-control bid-form-box bg-dark'})
         }
         labels={
-            'bids': 'Bid: $'
+            'bids': ''
         }
 

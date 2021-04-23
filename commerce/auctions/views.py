@@ -90,16 +90,17 @@ def create_listing(request):
 
 def listing_page(request, listing_id):
     listing = auctionListings.objects.get(pk=listing_id)
+    bid_form = None
     if request.user.is_authenticated:
         bid_form = BidForm()
 
 
 
-        return render(request, "auctions/listing_page.html",{
-        'listing': listing,
-        'Bid_option': bid_form,
-        'comments': listing.get_comments.all()
-        })
+    return render(request, "auctions/listing_page.html",{
+    'listing': listing,
+    'bid_option': bid_form,
+    'comments': listing.get_comments.all()
+    })
     #TODO
     #REQUIREMENTS
 

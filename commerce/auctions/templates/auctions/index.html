@@ -35,7 +35,9 @@
                     <div class='listing-description'>
                         <p>{{ listing.description|truncatechars:190 }}<p>
                     </div>
-                    <button class='btn view-btn' type='submit'>View</button>
+                    <a href="{% url 'listing_page' listing.id %}">
+                        <button class='btn view-btn' type='submit'>View</button>
+                    </a>
                 </div>   
             </div> 
         {%endfor%} 

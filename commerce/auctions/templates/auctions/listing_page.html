@@ -17,7 +17,7 @@
                 {% endif %}
                 <div class='listing-page-details'>
                     <div class='listing-page-title'><strong>{{listing.title}}</strong></div>
-                    {%if listing.topBid = None %}
+                    {%if listing.topBid is None %}
                         <div class='listing-page-price'>
                             <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
                         </div>
@@ -27,10 +27,18 @@
                         </div>
                     {% endif %}    
                     <div class='listing-page-description'>
-                        <p>{{ listing.description|truncatechars:190 }}<p>
+                        <p>{{ listing.description}}<p>
+                    </div> 
+                    <div class='action-items'>
+                        {%if bid_option %} 
+                            <div class=' form-group bid-form'>
+                                {{bid_option}}
+                                <button class='btn bid-btn' type='submit'>Bid</button>
+                            </div>
+                        <div class='vl'></div>  
+                        <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
+                        {%endif%}  
                     </div>
-                    <button class='btn bid-btn' type='submit'>Bid</button>
-                    <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
                 </div>   
     </div>
 {% endblock %}
