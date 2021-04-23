@@ -35,6 +35,7 @@ class auctionListings(models.Model):
     category = models.CharField(max_length=200, null=True, choices=options)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     topBid = models.DecimalField(null=True, blank=True, max_digits=10000, decimal_places=2)
+    status = models.BooleanField(null=True)
 
     def __str__(self):
         return self.title
