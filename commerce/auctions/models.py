@@ -30,11 +30,11 @@ class auctionListings(models.Model):
     )
     title = models.CharField( null=True, max_length=80)
     description = models.TextField(null=True, max_length=4000)
-    startingPrice = models.DecimalField(null=True, max_digits=10000, decimal_places=2)
+    startingPrice = models.FloatField(null=True,)
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=options)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
-    topBid = models.DecimalField(null=True, blank=True, max_digits=10000, decimal_places=2)
+    topBid = models.FloatField(null=True, blank=True,)
     status = models.BooleanField(null=True)
 
     def __str__(self):
@@ -42,7 +42,7 @@ class auctionListings(models.Model):
 
 class listingsBids(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    bids = models.DecimalField(max_digits=10000, decimal_places=2)
+    bids = models.FloatField()
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
 
     def __str__(self):

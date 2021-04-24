@@ -1,6 +1,9 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
+    {%if message %}
+        <div class="alert alert-secondary" role="alert"> {{ message }} </div>
+    {% endif %} 
     <div class='title'>
         <h2>{{listing.title}}</h2>
         <hr>
@@ -29,6 +32,7 @@
             <div class='listing-page-description'>
                 <p>{{ listing.description}}<p>
             </div> 
+
             <div class='action-items'>
                 {%if bid_option %} 
                     <form class=' form-group bid-form' action={% url 'listing_page' listing.id %} method="post">
@@ -38,7 +42,7 @@
                     </form>
                 <div class='vl'></div>  
                 <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
-                {%endif%}  
+                {%endif%}
             </div>
         </div>   
     </div>
@@ -50,10 +54,9 @@
         <div class='add-comment-container'>
             {%if loggedIn %}
                 <form class=' leave-comment-container' action={% url 'listing_page' listing.id %} method="post">
-                   {{ leave_comment }} 
+                    {% csrf_token %}
+                    {{ leave_comment }} 
                 </form>
-            {% else %}
-
             {% endif %}
         </div>
         {%for comment in comments %}

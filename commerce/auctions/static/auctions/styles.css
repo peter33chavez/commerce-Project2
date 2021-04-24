@@ -229,6 +229,10 @@ hr{
 
 /* listing page (comments) */
 
+.bid-success{
+    color: white;
+}
+
 .comments-container{
     margin: 0 30px;
 }
@@ -251,3 +255,4 @@ hr{
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
 }
+

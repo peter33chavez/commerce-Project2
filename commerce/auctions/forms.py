@@ -28,7 +28,7 @@ class BidForm(forms.ModelForm):
             'bids': ''
         }
 
-class commentForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = listingsComments
         fields = ('comments',)

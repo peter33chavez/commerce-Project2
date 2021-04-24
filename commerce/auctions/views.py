@@ -94,41 +94,52 @@ def listing_page(request, listing_id):
     if request.user.is_authenticated:
         loggedIn = True
         if request.method == "POST":
-            h
-            
-        
-
-        else:
+            bidForm = BidForm(request.POST)
+            commentForm = CommentForm(request.POST)
+            #check which form is submitted 
+            if bidForm and bidForm.is_valid():
+                bid = float(request.POST['bids'])
+                #check if this bid is >= or more than top bid.
+                if bid >= listing.startingPrice and listing.topBid is None or bid > listing.topBid:
+                    bid = bidForm.save(commit=False)
+                    bid.user = request.user
+                    bid.listing_id = listing
+                    bid.save()
+                    listing.topBid = bid.bids
+                    listing.save()
+                    message = 'Your bid has been placed!'
+                else:    
+                    message = 'Bid is too low.'       
+            #allow users to add comments to page
+            elif commentForm.is_valid(): 
+                comment = commentForm.save(commit=False)
+                comment.user = request.user
+                comment.listing_id = listing
+                comment.save()
+                message = 'Comment posted!'
             return render(request, "auctions/listing_page.html",{
             'listing': listing,
             'bid_option': BidForm(),
             'comments': listing.get_comments.all(),
-            'leave_comment': commentForm(),
-            'loggedIn': loggedIn
+            'leave_comment': CommentForm(),
+            'loggedIn': loggedIn,
+            'message': message
             })
-
-    return render(request, "auctions/listing_page.html",{
-    'listing': listing,
-    'comments': listing.get_comments.all(),
-    'loggedIn': loggedIn,
-    })
+        
+        return render(request, "auctions/listing_page.html",{
+        'listing': listing,
+        'bid_option': BidForm(),
+        'comments': listing.get_comments.all(),
+        'leave_comment': CommentForm(),
+        'loggedIn': loggedIn
+        })
+    else:    
+        return render(request, "auctions/listing_page.html",{
+        'listing': listing,
+        'comments': listing.get_comments.all(),
+        'loggedIn': loggedIn,
+        })
     
-    #TODO
-    #REQUIREMENTS
-
-    #if user is signed in they should be able to "add to WatchList"
-    #if item is already in watch list display "remove from watchlist" instead 
-
-    # if signed in user should be able to bid on item with the minimum bid being higher than starting bid or its current else return error "not meeting requirements"
-
-    #if signed in and the listing is yours, the ability to close the listing should be on this page 
-    #making the highest bid the winner 
-    #listing should no longer be availabe in active listings displayed as "closed listing"
-
-    #if logged in and on a closed listing page and the user was the winning bid. page should display that.
-
-    #if logged in users should be able to add comments to listing at the bottom. 
-    #page should display all comments from that specific listing.
 
 #@login_required
 #WatchList
