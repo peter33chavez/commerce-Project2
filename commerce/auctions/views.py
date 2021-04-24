@@ -76,7 +76,8 @@ def create_listing(request):
                 listing = form.save(commit=False)
                 listing.user_id = request.user.id
                 listing.save()
-                return render(request, "auctions/create_listing.html", {
+                return HttpResponseRedirect(reverse( "listing_page", args=[listing.id]),{
+                
                     'message':"Your Listing is now posted"
                 })
         else:

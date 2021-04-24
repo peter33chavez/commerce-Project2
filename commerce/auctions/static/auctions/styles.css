@@ -122,6 +122,8 @@ hr{
 
 .active-listings{
     margin: 40px 100px;
+    display: flex;
+    flex-direction: column;
 }
 
 .current-listings-index{
@@ -146,6 +148,7 @@ hr{
     padding: 10px;
     box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
     margin-bottom: 30px;
+    
 
 }
 
