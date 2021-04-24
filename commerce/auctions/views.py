@@ -92,15 +92,16 @@ def listing_page(request, listing_id):
     listing = auctionListings.objects.get(pk=listing_id)
     loggedIn = False
     if request.user.is_authenticated:
-        bid_form = BidForm()
         loggedIn = True
-
+        
 
 
         return render(request, "auctions/listing_page.html",{
         'listing': listing,
-        'bid_option': bid_form,
-        'comments': listing.get_comments.all()
+        'bid_option': BidForm(),
+        'comments': listing.get_comments.all(),
+        'leave_comment': commentForm(),
+        'loggedIn': loggedIn
         })
 
     return render(request, "auctions/listing_page.html",{

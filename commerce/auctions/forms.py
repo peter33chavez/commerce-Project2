@@ -33,7 +33,7 @@ class commentForm(forms.ModelForm):
         model = listingsComments
         fields = ('comments',)
         widgets={
-            'comments': forms.CharField(attrs={ 'class':'form-control leave-comment bg-dark', 'placeholder': 'Add a Comment'})
+            'comments': forms.TextInput(attrs={ 'class':'form-control leave-comment bg-dark', 'placeholder': 'Add a Comment'})
         }
         labels={
             'comments': ''

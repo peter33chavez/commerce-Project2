@@ -31,11 +31,11 @@
             </div> 
             <div class='action-items'>
                 {%if bid_option %} 
-                    <div class=' form-group bid-form'>
+                    <form class=' form-group bid-form' action={% url 'listing_page' listing.id %} method="post">
                         {% csrf_token %}
                         {{bid_option}}
                         <button class='btn bid-btn' type='submit'>Bid</button>
-                    </div>
+                    </form>
                 <div class='vl'></div>  
                 <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
                 {%endif%}  
@@ -48,8 +48,10 @@
     </div>
     <div class='comments-container'>
         <div class='add-comment-container'>
-            {%if loggedin %}
-            
+            {%if loggedIn %}
+                <form class=' leave-comment-container' action={% url 'listing_page' listing.id %} method="post">
+                   {{ leave_comment }} 
+                </form>
             {% else %}
 
             {% endif %}
