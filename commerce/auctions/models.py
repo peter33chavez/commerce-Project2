@@ -36,6 +36,7 @@ class auctionListings(models.Model):
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     topBid = models.FloatField(null=True, blank=True,)
     status = models.BooleanField(null=True)
+    watchers = models.ManyToManyField(User, blank=True, related_name='watching')
 
     def __str__(self):
         return self.title

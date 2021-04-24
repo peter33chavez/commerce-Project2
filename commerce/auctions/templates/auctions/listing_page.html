@@ -40,8 +40,12 @@
                         {{bid_option}}
                         <button class='btn bid-btn' type='submit'>Bid</button>
                     </form>
-                <div class='vl'></div>  
-                <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
+                    <div class='vl'></div> 
+                    {%if wishlisted %} 
+                        <button class='btn wishlist-btn' type='submit'>Remove from Wishlist</button>
+                    {% else %}
+                        <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
+                    {% endif %}
                 {%endif%}
             </div>
         </div>   
