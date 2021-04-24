@@ -48,7 +48,11 @@
     </div>
     <div class='comments-container'>
         <div class='add-comment-container'>
+            {%if loggedin %}
             
+            {% else %}
+
+            {% endif %}
         </div>
         {%for comment in comments %}
             <div class='comment item'>

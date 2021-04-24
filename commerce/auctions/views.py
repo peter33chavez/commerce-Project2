@@ -90,9 +90,10 @@ def create_listing(request):
 
 def listing_page(request, listing_id):
     listing = auctionListings.objects.get(pk=listing_id)
-    
+    loggedIn = False
     if request.user.is_authenticated:
         bid_form = BidForm()
+        loggedIn = True
 
 
 
@@ -104,7 +105,8 @@ def listing_page(request, listing_id):
 
     return render(request, "auctions/listing_page.html",{
     'listing': listing,
-    'comments': listing.get_comments.all()
+    'comments': listing.get_comments.all(),
+    'loggedIn': loggedIn,
     })
     
     #TODO

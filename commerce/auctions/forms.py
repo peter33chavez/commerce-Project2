@@ -28,3 +28,13 @@ class BidForm(forms.ModelForm):
             'bids': ''
         }
 
+class commentForm(forms.ModelForm):
+    class Meta:
+        model = listingsComments
+        fields = ('comments',)
+        widgets={
+            'comments': forms.CharField(attrs={ 'class':'form-control leave-comment bg-dark', 'placeholder': 'Add a Comment'})
+        }
+        labels={
+            'comments': ''
+        }
