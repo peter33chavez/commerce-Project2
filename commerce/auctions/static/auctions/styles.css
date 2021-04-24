@@ -177,7 +177,7 @@ hr{
 
 }
 
-/* listing page */
+/* listing page (listing details) */
 
 .action-items{
     display:flex;
@@ -220,9 +220,34 @@ hr{
     margin: 10px 0 0 30px;
 
 }
+
 .vl{
     border-left: 2px solid #B2AFAC;
     height: 40px;
-    padding: 0 10px;
-    
+    padding: 0 10px; 
+}
+
+/* listing page (comments) */
+
+.comments-container{
+    margin: 0 30px;
+}
+
+.comments-title-container{
+    margin: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 10px;
+}
+
+.listing-to-comment-break{
+    background:#3f3f3f;
+}
+
+.users-name{
+    margin-bottom: 0;
+}
+
+.users-comment{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }

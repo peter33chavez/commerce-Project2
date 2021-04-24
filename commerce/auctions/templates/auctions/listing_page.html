@@ -1,45 +1,60 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-<div class='title'>
+    <div class='title'>
         <h2>{{listing.title}}</h2>
-    <hr>
+        <hr>
     </div>
     <div class='listing-container'>
         {%if listing.imgUrl is None %}
-                <div class='listing-page-img'>
-                    <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
+            <div class='listing-page-img'>
+                <img  src='static/auctions/assets/img-placeholder.png' alt='Listed Item'>
+            </div>
+        {% else %}
+            <div class='listing-page-img'>
+                <img  src='{{listing.imgUrl}}' alt='Listed Item'>
+            </div>
+        {% endif %}
+        <div class='listing-page-details'>
+            <div class='listing-page-title'><strong>{{listing.title}}</strong></div>
+            {%if listing.topBid is None %}
+                <div class='listing-page-price'>
+                    <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
                 </div>
-                {% else %}
-                    <div class='listing-page-img'>
-                    <img  src='{{listing.imgUrl}}' alt='Listed Item'>
+            {% else %}
+                <div class='listing-page-price'>
+                    <strong><p>Current Bid: ${{listing.topBid|floatformat:2}}</p></strong>
                 </div>
-                {% endif %}
-                <div class='listing-page-details'>
-                    <div class='listing-page-title'><strong>{{listing.title}}</strong></div>
-                    {%if listing.topBid is None %}
-                        <div class='listing-page-price'>
-                            <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
-                        </div>
-                    {% else %}
-                            <div class='listing-page-price'>
-                            <strong><p>Current Bid: ${{listing.topBid|floatformat:2}}</p></strong>
-                        </div>
-                    {% endif %}    
-                    <div class='listing-page-description'>
-                        <p>{{ listing.description}}<p>
-                    </div> 
-                    <div class='action-items'>
-                        {%if bid_option %} 
-                            <div class=' form-group bid-form'>
-                                {% csrf_token %}
-                                {{bid_option}}
-                                <button class='btn bid-btn' type='submit'>Bid</button>
-                            </div>
-                        <div class='vl'></div>  
-                        <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
-                        {%endif%}  
+            {% endif %}    
+            <div class='listing-page-description'>
+                <p>{{ listing.description}}<p>
+            </div> 
+            <div class='action-items'>
+                {%if bid_option %} 
+                    <div class=' form-group bid-form'>
+                        {% csrf_token %}
+                        {{bid_option}}
+                        <button class='btn bid-btn' type='submit'>Bid</button>
                     </div>
-                </div>   
+                <div class='vl'></div>  
+                <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
+                {%endif%}  
+            </div>
+        </div>   
+    </div>
+    <div class='comments-title-container'>
+        <hr class='listing-to-comment-break'>
+        <h4>Comments</h4>
+    </div>
+    <div class='comments-container'>
+        <div class='add-comment-container'>
+            
+        </div>
+        {%for comment in comments %}
+            <div class='comment item'>
+                <p class='users-name'><strong>{{comment.user}}</strong></p>
+                <p class='users-comment'>{{comment.comments}}</p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
