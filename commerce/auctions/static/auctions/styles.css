@@ -259,3 +259,8 @@ hr{
     font-size: 13px;
 }
 
+/* listing-page (active status) */
+
+.active-status-container{
+    margin-left: 100px;
+}

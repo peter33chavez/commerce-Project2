@@ -102,14 +102,6 @@ def listing_page(request, listing_id):
         if request.method == "POST":
             bidForm = BidForm(request.POST)
             commentForm = CommentForm(request.POST)
-            #check which form is submitted 
-            # if request.POST['wishlistForm']:
-            #     if request.user in listing.wachers.all():
-            #         listing.watchers.remove(request.user)
-            #     else:
-            #         listing.watchers.add(request.user)
-            #     return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))
-
             if bidForm and bidForm.is_valid():
                 bid = float(request.POST['bids'])
                 #check if this bid is >= or more than top bid.
@@ -165,12 +157,15 @@ def update_wishlist(request, listing_id):
 
 
 def listing_status(request, listing_id):
-
-
-
-
-
-
-
-
-
+    active_listing = auctionListings.objects.get(pk=listing_id)
+    active_listing.status = False
+    active_listing.save()
+    users = listingsBids.objects.filter(pk=listing_id).all()
+    for user in users:
+        if user.bids == active_listing.topBid:
+            max_bid = user
+            return HttpResponseRedirect(reverse('listing_page', args=[listing_id]),{
+            'active': active_listing.status,
+            'max_bid': max_bid,
+            'listing': active_listing
+            })

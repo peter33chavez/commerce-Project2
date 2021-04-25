@@ -35,7 +35,7 @@ class auctionListings(models.Model):
     category = models.CharField(max_length=200, null=True, choices=options)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     topBid = models.FloatField(null=True, blank=True,)
-    status = models.BooleanField(null=True)
+    status = models.BooleanField(null=True, default=True)
     watchers = models.ManyToManyField(User, blank=True, related_name='watching')
 
     def __str__(self):

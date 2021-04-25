@@ -32,28 +32,44 @@
             <div class='listing-page-description'>
                 <p>{{ listing.description}}<p>
             </div> 
-
-            <div class='action-items'>
-                {%if bid_option %} 
-                    <form class=' form-group bid-form' action={% url 'listing_page' listing.id %} method="post">
+            {% if listing.status == True %}
+                <div class='action-items'>
+                    {%if bid_option %} 
+                        <form class=' form-group bid-form' action={% url 'listing_page' listing.id %} method="post">
+                            {% csrf_token %}
+                            {{bid_option}}
+                            <button class='btn bid-btn' type='submit'>Bid</button>
+                        </form>
+                        <div class='vl'></div> 
+                        {%if wishlisted %} 
+                            <form action={% url 'update_wishlist' listing.id %} method='post'>
+                                {% csrf_token %}
+                                <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Remove from Wishlist'></input>
+                            </form>
+                        {% else %}
+                            <form  action={% url 'update_wishlist' listing.id %} method='post'>
+                                {% csrf_token %}
+                                <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Add to Wishlist'></input>
+                            </form>
+                        {% endif %}
+                    {%endif%}
+                    {%if request.user == listing.user %}
+                    <form action={% url 'listing_status' listing.id %} class='active-status-container' method='post'>
                         {% csrf_token %}
-                        {{bid_option}}
-                        <button class='btn bid-btn' type='submit'>Bid</button>
+                        <input class='btn active-status' type='submit' value='Close Listing'></input>
                     </form>
-                    <div class='vl'></div> 
-                    {%if wishlisted %} 
-                        <form action={% url 'update_wishlist' listing.id %} method='post'>
-                            {% csrf_token %}
-                            <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Remove from Wishlist'></input>
-                        </form>
-                    {% else %}
-                         <form  action={% url 'update_wishlist' listing.id %} method='post'>
-                            {% csrf_token %}
-                            <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Add to Wishlist'></input>
-                        </form>
                     {% endif %}
-                {%endif%}
-            </div>
+                </div>
+            {%else%}
+                <div class='closed-listing-container'>
+                    <h5>Listing is Closed</h5>
+                    {%if request.user == max_bid %}
+                        <p>You are the highest bid, Congratulation! </p>
+                    {%else%}
+                        <p>Sorry, you didn't win the bid.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>   
     </div>
     <div class='comments-title-container'>
