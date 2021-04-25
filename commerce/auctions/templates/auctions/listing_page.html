@@ -63,7 +63,7 @@
             {%else%}
                 <div class='closed-listing-container'>
                     <h5>Listing is Closed</h5>
-                    {%if request.user == max_bid %}
+                    {%if request.user == listing.buyer %}
                         <p>You are the highest bid, Congratulation! </p>
                     {%else%}
                         <p>Sorry, you didn't win the bid.</p>

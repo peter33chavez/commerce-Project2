@@ -157,16 +157,14 @@ def update_wishlist(request, listing_id):
 
 
 def listing_status(request, listing_id):
-    if request.method == "POST":
-        active_listing = auctionListings.objects.get(pk=listing_id)
-        active_listing.status = False
-        active_listing.save()
-        users = listingsBids.objects.filter(pk=listing_id).all()
-        for user in users:
-            if user.bids == active_listing.topBid:
-                max_bid = user
-        return render(request, 'auctions/listing_page.html',{
-        'active': active_listing.status,
-        'max_bid': max_bid,
-        'listing': active_listing
-        })
+    active_listing = auctionListings.objects.get(pk=listing_id)
+    if request.user == active_listing.user:
+        if active_listing.topBid:
+            active_listing.status = False
+            active_listing.buyer = listingsBids.objects.filter(listing_id=active_listing).last().user
+            active_listing.save()
+            return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))
+        else:
+            active_listing.status = False
+            active_listing.save()
+            return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))

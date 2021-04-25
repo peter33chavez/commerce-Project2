@@ -33,9 +33,9 @@ class auctionListings(models.Model):
     startingPrice = models.FloatField(null=True,)
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, choices=options)
-    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.PROTECT, related_name='my_listings')
     topBid = models.FloatField(null=True, blank=True,)
-    buyer = models.CharField( null=True, max_length=80)
+    buyer = models.ForeignKey(User, null=True, blank=True, max_length=80, on_delete=models.PROTECT, related_name='bought_listings')
     status = models.BooleanField(null=True, default=True)
     watchers = models.ManyToManyField(User, blank=True, related_name='watching')
 
