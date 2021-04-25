@@ -168,3 +168,15 @@ def listing_status(request, listing_id):
             active_listing.status = False
             active_listing.save()
             return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))
+
+def wishlist(request):
+    return render(request, 'auctions/wishlist.html')
+
+
+
+def category_search(request):
+    return render(request, 'auctions/category_search.html')
+
+
+def category(request):
+    return render(request, 'auctions/category.html')    
