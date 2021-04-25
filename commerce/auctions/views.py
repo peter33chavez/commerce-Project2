@@ -78,7 +78,7 @@ def create_listing(request):
                 listing.save()
                 return HttpResponseRedirect(reverse( "listing_page", args=[listing.id]),{
                 
-                    'message':"Your Listing is now posted"
+                    'message': "Your Listing is now posted"
                 })
         else:
             form = listingForm()          
@@ -92,12 +92,24 @@ def create_listing(request):
 def listing_page(request, listing_id):
     listing = auctionListings.objects.get(pk=listing_id)
     loggedIn = False
+    message = None
     if request.user.is_authenticated:
         loggedIn = True
+        if request.user in listing.watchers.all():
+            wishlisted = True
+        else:
+            wishlisted = False  
         if request.method == "POST":
             bidForm = BidForm(request.POST)
             commentForm = CommentForm(request.POST)
             #check which form is submitted 
+            # if request.POST['wishlistForm']:
+            #     if request.user in listing.wachers.all():
+            #         listing.watchers.remove(request.user)
+            #     else:
+            #         listing.watchers.add(request.user)
+            #     return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))
+
             if bidForm and bidForm.is_valid():
                 bid = float(request.POST['bids'])
                 #check if this bid is >= or more than top bid.
@@ -124,7 +136,8 @@ def listing_page(request, listing_id):
             'comments': listing.get_comments.all(),
             'leave_comment': CommentForm(),
             'loggedIn': loggedIn,
-            'message': message
+            'message': message,
+            'wishlisted': wishlisted
             })
         
         return render(request, "auctions/listing_page.html",{
@@ -132,7 +145,8 @@ def listing_page(request, listing_id):
         'bid_option': BidForm(),
         'comments': listing.get_comments.all(),
         'leave_comment': CommentForm(),
-        'loggedIn': loggedIn
+        'loggedIn': loggedIn,
+        'wishlisted': wishlisted
         })
     else:    
         return render(request, "auctions/listing_page.html",{
@@ -141,22 +155,22 @@ def listing_page(request, listing_id):
         'loggedIn': loggedIn,
         })
     
-
-#@login_required
-#WatchList
-    #TODO
-    #REQUIREMENTS
-
-    # users who are logged in should have a link on the dashboard for watchlist items. which should display all their watchlist listings. 
-    #optional- show active and closed listings
-
-    # clicked on user should be redirected to the listing page. 
+def update_wishlist(request, listing_id):
+    current_listing = auctionListings.objects.get(pk=listing_id)
+    if request.user in current_listing.watchers.all():
+        current_listing.watchers.remove(request.user)
+    else:
+        current_listing.watchers.add(request.user)
+    return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))    
 
 
-#Categories 
-    #TODO
-    #REQUIREMENTS
+def listing_status(request, listing_id):
 
-    #categories page should show all available categories. and when you select a category you should be brought to search results with that category in listening 
-    
-    #all results should be clickable 
+
+
+
+
+
+
+
+

@@ -42,9 +42,15 @@
                     </form>
                     <div class='vl'></div> 
                     {%if wishlisted %} 
-                        <button class='btn wishlist-btn' type='submit'>Remove from Wishlist</button>
+                        <form action={% url 'update_wishlist' listing.id %} method='post'>
+                            {% csrf_token %}
+                            <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Remove from Wishlist'></input>
+                        </form>
                     {% else %}
-                        <button class='btn wishlist-btn' type='submit'>Add to Wishlist</button>
+                         <form  action={% url 'update_wishlist' listing.id %} method='post'>
+                            {% csrf_token %}
+                            <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Add to Wishlist'></input>
+                        </form>
                     {% endif %}
                 {%endif%}
             </div>
