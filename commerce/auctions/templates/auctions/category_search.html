@@ -5,9 +5,10 @@
     </div>
     <div class= 'category-list'>
         {% for category in categories %}
-            <a href="{% url 'category' category %}" class='category-item'>
-            {{ category }} 
-            </a>   
+            <form action="{% url 'category' category_item %}" method='post'>
+                {% csrf_token %}
+                <input class='btn category-item' type='submit' value='{{ category }}'></input>
+            </form>  
         {%endfor%}    
     </div> 
 {% endblock %}

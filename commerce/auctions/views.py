@@ -179,28 +179,12 @@ def wishlist(request):
 
 
 def category_search(request): 
-    options =[
-        'Books',
-        'Business & Industrial',
-        'Clothing, Shoes & Accessories',
-        'Collectibles',
-        'Consumer Electronics',
-        'Crafts',
-        'Dolls & Bears',
-        'Home & Garden',
-        'Motors',
-        'Pet Supplies',
-        'Sporting Goods',
-        'Sports Mem, Cards & Fan Shop',
-        'Toys & Hobbies',
-        'Antiques',
-        'Computers/Tablets & Networking',
-        'Other'
-    ]
+
+    
     return render(request, 'auctions/category_search.html',{
-        'categories': options
+        'categories': categories
     })
 
 
-def category(request):
+def category(request,category_id):
     return render(request, 'auctions/category.html')    
