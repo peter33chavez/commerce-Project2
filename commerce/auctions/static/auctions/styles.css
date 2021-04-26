@@ -14,6 +14,12 @@ hr{
 
 }
 
+.page-title{
+    margin: 0 50px;
+    padding: 10px;
+    box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
+}
+
 .bg-light{
     background-color: #FFCE2B!important;
 }
@@ -130,12 +136,7 @@ hr{
     margin-top: 40px;
 }
 
-.dashboard{
-    margin: 0 50px;
-    padding: 10px;
-    box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
 
-}
 
 .listing-description{
     font-family: 'Montserrat', sans-serif;
@@ -264,3 +265,8 @@ hr{
 .active-status-container{
     margin-left: 100px;
 }
+
+/* wishlist page */
+
+
+/* category search page  */

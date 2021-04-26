@@ -170,12 +170,36 @@ def listing_status(request, listing_id):
             return HttpResponseRedirect(reverse('listing_page', args=[listing_id]))
 
 def wishlist(request):
-    return render(request, 'auctions/wishlist.html')
+    user=request.user
+    wishlist_listings= user.watching.all()
+    return render(request, 'auctions/wishlist.html',{
+        'listings':wishlist_listings
+    })
 
 
 
-def category_search(request):
-    return render(request, 'auctions/category_search.html')
+def category_search(request): 
+    options =[
+        'Books',
+        'Business & Industrial',
+        'Clothing, Shoes & Accessories',
+        'Collectibles',
+        'Consumer Electronics',
+        'Crafts',
+        'Dolls & Bears',
+        'Home & Garden',
+        'Motors',
+        'Pet Supplies',
+        'Sporting Goods',
+        'Sports Mem, Cards & Fan Shop',
+        'Toys & Hobbies',
+        'Antiques',
+        'Computers/Tablets & Networking',
+        'Other'
+    ]
+    return render(request, 'auctions/category_search.html',{
+        'categories': options
+    })
 
 
 def category(request):
