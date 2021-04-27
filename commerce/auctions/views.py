@@ -195,7 +195,7 @@ def category_results(request, category):
     category_list = categories.objects.all()
     for item in category_list:
         print(category)
-        if item == category:
+        if str(item) == str(category):
             category_id = item.id
             allListings = auctionListings.objects.filter(category=category_id, status=True).all()
             return render(request, 'auctions/category.html',{

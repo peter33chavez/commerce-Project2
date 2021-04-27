@@ -266,7 +266,18 @@ hr{
     margin-left: 100px;
 }
 
-/* wishlist page */
-
-
 /* category search page  */
+.category-list{
+    margin: 40px 100px;
+}
+
+
+.category-item{
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.category-item a{
+    font-size: 25px;
+    color:rgb(226, 225, 225);
+}
