@@ -192,18 +192,15 @@ def category_search(request):
 
 
 def category_results(request, category):
-    category_list = categories.objects.all()
-    for item in category_list:
-        print(category)
-        if str(item) == str(category):
-            category_id = item.id
-            allListings = auctionListings.objects.filter(category=category_id, status=True).all()
-            return render(request, 'auctions/category.html',{
-            'listings': allListings,
-            'category_title': category
-            })
-        else:    
-            return render(request, 'auctions/category.html',{
-            'message': 'Sorry, no listings under this Category'
-            })
+    category_title = categories.objects.get(pk=category)
+    allListings = auctionListings.objects.filter(category=category, status=True).all()
+    if allListings:    
+        return render(request, 'auctions/category.html',{
+        'listings': allListings,
+        'category_title': category_title
+        })
+    else:    
+        return render(request, 'auctions/category.html',{
+        'message': 'Sorry, no listings under this Category'
+        })
     

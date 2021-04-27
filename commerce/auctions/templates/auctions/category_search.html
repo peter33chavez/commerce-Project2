@@ -9,7 +9,7 @@
         <ul class= 'category-list'>
             {% for category in categoryList %}
                 <li class='category-item'>
-                    <a href="{% url 'category_results' category.category %}">{{ category.category }}</a>  
+                    <a href="{% url 'category_results' category.id %}">{{ category.category }}</a>  
                 </li>
             {%endfor%}    
         </ul>
