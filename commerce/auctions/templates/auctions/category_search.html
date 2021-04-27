@@ -3,12 +3,15 @@
     <div class='page-title category-search'>
         <h1>Categories</h1>
     </div>
-    <div class= 'category-list'>
-        {% for category in categories %}
-            <form action="{% url 'category' category_item %}" method='post'>
-                {% csrf_token %}
-                <input class='btn category-item' type='submit' value='{{ category }}'></input>
-            </form>  
-        {%endfor%}    
-    </div> 
+    {% if message %}
+        <h3>{{ message }}</h3>
+    {% else %}
+        <ul class= 'category-list'>
+            {% for category in categoryList %}
+                <li class='category-item'>
+                    <a href="{% url 'category_results' category.category %}">{{ category.category }}</a>  
+                </li>
+            {%endfor%}    
+        </ul>
+    {% endif %}     
 {% endblock %}

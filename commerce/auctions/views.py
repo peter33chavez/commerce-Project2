@@ -179,12 +179,31 @@ def wishlist(request):
 
 
 def category_search(request): 
+    listings = auctionListings.objects.all()
+    if listings:
+        allCategories = categories.objects.all()
+        return render(request, 'auctions/category_search.html',{
+            'categoryList': allCategories
+        })
+    else:
+        return render(request, 'auctions/category_search.html',{
+            'message': 'No current listings'
+        })
 
+
+def category_results(request, category):
+    category_list = categories.objects.all()
+    for item in category_list:
+        print(category)
+        if item == category:
+            category_id = item.id
+            allListings = auctionListings.objects.filter(category=category_id, status=True).all()
+            return render(request, 'auctions/category.html',{
+            'listings': allListings,
+            'category_title': category
+            })
+        else:    
+            return render(request, 'auctions/category.html',{
+            'message': 'Sorry, no listings under this Category'
+            })
     
-    return render(request, 'auctions/category_search.html',{
-        'categories': categories
-    })
-
-
-def category(request,category_id):
-    return render(request, 'auctions/category.html')    

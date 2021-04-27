@@ -8,31 +8,21 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.username}"
-    
+        
+class categories(models.Model):
+
+    category = models.CharField(max_length=200) 
+
+    def __str__(self):
+        return self.category  
+
 class auctionListings(models.Model):
-    options = (
-        ('Books', 'Books'),
-        ('Business & Industrial', 'Business & Industrial'),
-        ('Clothing, Shoes & Accessories', 'Clothing, Shoes & Accessories'),
-        ('Collectibles', 'Collectibles'),
-        ('Consumer Electronics', 'Consumer Electronics'),
-        ('Crafts', 'Crafts'),
-        ('Dolls & Bears', 'Dolls & Bears'),
-        ('Home & Garden', 'Home & Garden'),
-        ('Motors', 'Motors'),
-        ('Pet Supplies', 'Pet Supplies'),
-        ('Sporting Goods', 'Sporting Goods'),
-        ('Sports Mem, Cards & Fan Shop', 'Sports Mem, Cards & Fan Shop'),
-        ('Toys & Hobbies', 'Toys & Hobbies'),
-        ('Antiques', 'Antiques'),
-        ('Computers/Tablets & Networking','Computers/Tablets & Networking'),
-        ('Other','Other')
-    )
+
     title = models.CharField( null=True, max_length=80)
     description = models.TextField(null=True, max_length=4000)
     startingPrice = models.FloatField(null=True,)
     imgUrl = models.URLField(max_length=200, null=True, blank=True)
-    category = models.CharField(max_length=200, null=True, choices=options)
+    category = models.ForeignKey(categories, on_delete=models.CASCADE, null=True, related_name='all_listings')
     user = models.ForeignKey(User, null=True, on_delete=models.PROTECT, related_name='my_listings')
     topBid = models.FloatField(null=True, blank=True,)
     buyer = models.ForeignKey(User, null=True, blank=True, max_length=80, on_delete=models.PROTECT, related_name='bought_listings')
@@ -43,6 +33,7 @@ class auctionListings(models.Model):
         return self.title
 
 class listingsBids(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     bids = models.FloatField()
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True)
@@ -52,6 +43,7 @@ class listingsBids(models.Model):
     
 
 class listingsComments(models.Model):
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     comments = models.CharField(max_length=80)
     listing_id = models.ForeignKey(auctionListings, on_delete=models.CASCADE, null=True, related_name='get_comments')
