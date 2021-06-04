@@ -1,0 +1,283 @@
+/* Bootstrap/customer edits */
+body {
+    background: #212121;
+    color: #B2AFAC;
+}
+
+hr{
+    background: #B2AFAC;
+}
+
+.title{
+    margin: 0 80px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.page-title{
+    margin: 0 50px;
+    padding: 10px;
+    box-shadow: 0 10px 10px 0px rgba(0,0,0,.2);
+}
+
+.bg-light{
+    background-color: #FFCE2B!important;
+}
+
+.bg-dark{
+    background-color: #212121!important;
+}
+
+.btn{
+    padding: 5px 30px!important;
+    margin-bottom: 20px;
+    background: #FFCE2B!important;
+    color: #707070!important;
+}
+
+.btn:hover{
+    background: #ffc400!important;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #B2AFAC!important;
+}
+
+/* NavBar */
+.logo-item a h1{
+    font-weight: 600;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+
+.logo-item a{
+    color: #707070;
+    text-decoration: none;
+}
+
+.navbar{
+    margin-bottom: 40px;
+    box-shadow: 0 0 30px 30px rgba(0,0,0,.2);
+}
+
+.navbar-brand h1, .nav-link{
+    color: #707070;
+
+
+}
+
+.navbar-selects{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+.nav-link{
+    color: #707070!important;
+    font-size: 15px;
+
+}
+
+.nav-link:hover{
+    color: #4e4e4e!important;
+}
+
+.sign-in-message{
+    color: #212121;
+    position: relative;
+    top: 8px;
+    left: 20px;
+}
+
+/*  Login/Register Page */
+
+.login-content, .register-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.login-error{
+    text-align: center;
+    color: red;
+}
+
+.login-form, .register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Create Listing Page */
+
+.create-listing{
+    margin: 0 80px;
+}
+
+.create-listing-btn{
+    text-align: right;
+}
+
+/* Dashboard */
+
+.active-listings{
+    margin: 40px 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.current-listings-index{
+    margin-top: 40px;
+}
+
+
+
+.listing-description{
+    font-family: 'Montserrat', sans-serif;
+    width: 400px;
+    height: 90px;
+}
+
+.listing-item{
+    display: flex;
+    padding: 10px;
+    box-shadow: 0 0 20px 5px rgba(0,0,0,.2);
+    margin-bottom: 30px;
+    
+
+}
+
+.listing-details{
+    margin-left: 50px;
+
+}
+
+.listing-img{
+    align-self: center;
+}
+
+.listing-img img{
+    max-width: 250px;
+    border-radius: 5px;
+}
+
+.listing-price{
+    font-size: 12px;
+}
+
+.listing-title{
+    font-size: 18px;
+    color: rgb(226, 225, 225);
+}
+
+.view-btn{
+    margin: 20px 0 5px 0;
+
+}
+
+/* listing page (listing details) */
+
+.action-items{
+    display:flex;
+}
+
+.bid-btn{
+    margin-right: 20px;
+}
+
+.bid-form{
+    display:flex;
+    margin: 0;
+}
+
+.bid-form-box{
+    width: 100px;
+    margin: 0 10px 0 0;
+}
+.listing-container{
+    display: flex;
+    flex-direction: column;
+    margin: 40px 100px;
+}
+
+.listing-page-title, .listing-page-price{
+    color: rgb(226, 225, 225);
+}
+
+.listing-page-img{
+    align-self: center;
+    width: 595px;
+}
+
+.listing-page-img img{
+    max-width: 595px;
+    max-height: auto;
+}
+
+.listing-page-details{
+    margin: 10px 0 0 30px;
+
+}
+
+.vl{
+    border-left: 2px solid #B2AFAC;
+    height: 40px;
+    padding: 0 10px; 
+}
+
+/* listing page (comments) */
+
+.bid-success{
+    color: white;
+}
+
+.comments-container{
+    margin: 0 30px;
+}
+
+.comments-title-container{
+    margin: 0 20px;
+    font-family: 'Montserrat', sans-serif;
+    padding-bottom: 10px;
+}
+
+.listing-to-comment-break{
+    background:#3f3f3f;
+}
+
+.users-name{
+    margin-bottom: 0;
+}
+
+.users-comment{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+/* listing-page (active status) */
+
+.active-status-container{
+    margin-left: 100px;
+}
+
+/* category search page  */
+.category-list{
+    margin: 40px 100px;
+}
+
+
+.category-item{
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.category-item a{
+    font-size: 25px;
+    color:rgb(226, 225, 225);
+}

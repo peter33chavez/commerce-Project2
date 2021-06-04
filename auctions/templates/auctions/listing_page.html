@@ -1,0 +1,96 @@
+{% extends "auctions/layout.html" %}
+{%load static %}
+
+{% block body %}
+    {%if message %}
+        <div class="alert alert-secondary" role="alert"> {{ message }} </div>
+    {% endif %} 
+    <div class='title'>
+        <h2>{{listing.title}}</h2>
+        <hr>
+    </div>
+    <div class='listing-container'>
+        {%if listing.imgUrl is None %}
+            <div class='listing-page-img'>
+                <img  src="{% static 'auctions/assets/img-placeholder.png' %}" alt='Listed Item'>
+            </div>
+        {% else %}
+            <div class='listing-page-img'>
+                <img  src='{{listing.imgUrl}}' alt='Listed Item'>
+            </div>
+        {% endif %}
+        <div class='listing-page-details'>
+            <div class='listing-page-title'><strong>{{listing.title}}</strong></div>
+            {%if listing.topBid is None %}
+                <div class='listing-page-price'>
+                    <strong><p>Current Bid: ${{listing.startingPrice|floatformat:2}}</p></strong>
+                </div>
+            {% else %}
+                <div class='listing-page-price'>
+                    <strong><p>Current Bid: ${{listing.topBid|floatformat:2}}</p></strong>
+                </div>
+            {% endif %}    
+            <div class='listing-page-description'>
+                <p>{{ listing.description}}<p>
+            </div> 
+            {% if listing.status == True %}
+                <div class='action-items'>
+                    {%if bid_option %} 
+                        <form class=' form-group bid-form' action={% url 'listing_page' listing.id %} method="post">
+                            {% csrf_token %}
+                            {{bid_option}}
+                            <button class='btn bid-btn' type='submit'>Bid</button>
+                        </form>
+                        <div class='vl'></div> 
+                        {%if wishlisted %} 
+                            <form action={% url 'update_wishlist' listing.id %} method='post'>
+                                {% csrf_token %}
+                                <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Remove from Wishlist'></input>
+                            </form>
+                        {% else %}
+                            <form  action={% url 'update_wishlist' listing.id %} method='post'>
+                                {% csrf_token %}
+                                <input name='wishlistForm' class='btn wishlist-btn' type='submit' value='Add to Wishlist'></input>
+                            </form>
+                        {% endif %}
+                    {%endif%}
+                    {%if request.user == listing.user %}
+                    <form action={% url 'listing_status' listing.id %} class='active-status-container' method='post'>
+                        {% csrf_token %}
+                        <input class='btn active-status' type='submit' value='Close Listing'></input>
+                    </form>
+                    {% endif %}
+                </div>
+            {%else%}
+                <div class='closed-listing-container'>
+                    <h5>Listing is Closed</h5>
+                    {%if request.user == listing.buyer %}
+                        <p>You are the highest bid, Congratulation! </p>
+                    {%else%}
+                        <p>Sorry, you didn't win the bid.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>   
+    </div>
+    <div class='comments-title-container'>
+        <hr class='listing-to-comment-break'>
+        <h4>Comments</h4>
+    </div>
+    <div class='comments-container'>
+        <div class='add-comment-container'>
+            {%if loggedIn %}
+                <form class=' leave-comment-container' action={% url 'listing_page' listing.id %} method="post">
+                    {% csrf_token %}
+                    {{ leave_comment }} 
+                </form>
+            {% endif %}
+        </div>
+        {%for comment in comments %}
+            <div class='comment item'>
+                <p class='users-name'><strong>{{comment.user}}</strong></p>
+                <p class='users-comment'>{{comment.comments}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
